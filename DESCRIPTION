@@ -1,0 +1,19 @@
+Package: hexocart
+Title: Hexagonal and cartogram transformation of spatial objects.
+Version: 0.0.0.9000
+Authors@R: person("John", "Curiel", email = "jcuriel@mit.edu", role = c("aut", "trl", "cre"))
+Description: The hexocart pacakge reads in regular polygon shapefiles and transforms them into a 
+	hexagonal grid. The hexagonal transformation is a minor alteration of the makeTilegram pkg, 
+	with the main update being that the user now has the data frame preserved, which was not the
+	case in the previous version. The hexcarto function in turn creates a hexagonal cartogram in 
+	such a manner that the user will not have hexagons overlap on top of each other, and 
+	additionally preserves the location and overall shape of the area of interest. 
+Depends: R (>= 3.5.1)
+Imports: rgdal,rgeos,BAMMtools,GISTools,moments,plotrix,sp,clue,devtools,makeTilegram
+License: General
+Author: John Curiel [aut, trl, cre] (S original)
+Maintainer: John Curiel <jcuriel@mit.edu>
+Encoding: UTF-8
+Date/Publication: 2020-02-09 12:20:00 EST
+RoxygenNote: 6.1.1
+LazyData: true
