@@ -30,7 +30,7 @@
 
 #' 
 
-hexcartobc <- function(shp,pop_field,choro_field,jenks=c(TRUE,FALSE), colval,label_field, quant_carto_breaks=c(TRUE,FALSE)){
+hexcarto2b <- function(shp,pop_field,choro_field,jenks=c(TRUE,FALSE), colval,label_field, quant_carto_breaks=c(TRUE,FALSE)){
   list.of.packages <- c("rgdal","rgeos","BAMMtools","GISTools","moments","plotrix","sp","clue","devtools","roxygen2")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages)
