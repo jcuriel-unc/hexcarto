@@ -17,7 +17,7 @@ makeTilegram2 <- function (sp, cellsize = NULL){
   if(!"makeTilegram" %in% installed.packages()[,"Package"])
     devtools::install_git("https://gitlab.com/lajh87/makeTilegram")
   #####Here is the make tile gram path 
-  sp <- sp::spTransform(sp, sp::CRS("+init=EPSG:32663"))
+  sp <- sp::spTransform(sp, sp::CRS("+proj=longlat +datum=WGS84 +EPSG:4326"))
   tiles <- hex_tiles(sp)
   tiles <- tiles[sp, ]
   pts <- rgeos::gCentroid(sp, byid = T)
