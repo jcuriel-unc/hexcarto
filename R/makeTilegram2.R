@@ -14,8 +14,13 @@ makeTilegram2 <- function (sp, cellsize = NULL){
   list.of.packages <- c("rgdal","rgeos","BAMMtools","GISTools","moments","plotrix","sp","clue","devtools","roxygen2")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages)
+    library(rlang)
+  for(pkg in (list.of.packages)){
+    eval(bquote(library(.(pkg))))
+  }
   if(!"makeTilegram" %in% installed.packages()[,"Package"])
     devtools::install_git("https://gitlab.com/lajh87/makeTilegram")
+  library(makeTilegram)
   #####Here is the make tile gram path 
   sp <- sp::spTransform(sp, sp::CRS("+proj=longlat +datum=WGS84 +EPSG:4326"))
   tiles <- hex_tiles(sp)
