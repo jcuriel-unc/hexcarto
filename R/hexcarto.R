@@ -111,6 +111,8 @@ hexcarto2b <- function(shp,pop_field,choro_field,jenks=c(TRUE,FALSE), colval,lab
       cents$color_field <- "blue"
     }
   }
+    names(cents)
+  print("Past the jenks and color process")  
   data <- data.frame(cents$xcor,cents$ycor,cents$pop_field, cents$color_field)
   colnames(data) <- c("xcor","ycor","pop_field","color_field")
   if(missing(choro_field)==FALSE){
