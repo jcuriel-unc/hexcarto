@@ -7,7 +7,8 @@
 #' @param choro_field The name of the optional field with the values that will later go onto provide the values for the choropleth map
 #' @param colval The name of the optional field that if true, will provide colors by polygon for the map. Note that if this field and the 
 #' choro/jenks fields are empty, then the map will be made blue. The colval field should take the form of a value that can be recognized as 
-#' as color (i.e. blue). Can also be manipulated before hand by the user so that it reflects some non-jenks categorization of values.    
+#' as color (i.e. blue). Can also be manipulated before hand by the user so that it reflects some non-jenks categorization of values.
+#' @param jenks The True/False field that if true, will produce a grayscale natural breaks choropleth, as provided with the choro_field.
 #' @param label_field The name of the field with polygon labels, which if filled, will overlay the polygons with names. 
 #' @param quant_carto_breaks The True/False field as to how the user wants the population weights. If true, then the weights will be transformed
 #' such that the weights will be broken by the values quantile (i.e. pops in fifth pct will have size weight of 0.05). False, and the values 
@@ -34,8 +35,13 @@ hexcarto2b <- function(shp,pop_field,choro_field,jenks=c(TRUE,FALSE), colval,lab
   list.of.packages <- c("rgdal","rgeos","BAMMtools","GISTools","moments","plotrix","sp","clue","devtools","roxygen2")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages)
+    library(rlang)
+  for(pkg in (list.of.packages)){
+    eval(bquote(library(.(pkg))))
+  }
   if(!"makeTilegram" %in% installed.packages()[,"Package"])
     devtools::install_git("https://gitlab.com/lajh87/makeTilegram")
+  library(makeTilegram)
   #####Here is the make tile gram path 
   sp <- sp::spTransform(shp, sp::CRS("+proj=longlat +datum=WGS84 +EPSG:4326"))
   tiles <- hex_tiles(sp)
