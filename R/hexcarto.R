@@ -105,8 +105,8 @@ hexcarto2b <- function(shp,pop_field,choro_field,jenks=c(TRUE,FALSE), colval,lab
     cents$color_field[cents$choro_field >= vals_jenks[3] & cents$choro_field < vals_jenks[4]  ] <- grays[3]
     cents$color_field[cents$choro_field >= vals_jenks[4] & cents$choro_field < vals_jenks[5]  ] <- grays[2]
     cents$color_field[cents$choro_field >= vals_jenks[5]  ] <- grays[1]
-  }else if(missing(jenks)==TRUE | jenks==FALSE | missing(col_val)==FALSE){
-    if(missing(col_val)==T){
+  }else if(missing(jenks)==TRUE | jenks==FALSE | missing(colval)==FALSE){
+    if(missing(colval)==T){
       print("Color field missing, so will make map blue.")
       cents$color_field <- "blue"
     }
