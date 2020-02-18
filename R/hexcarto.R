@@ -87,7 +87,7 @@ hexcarto2b <- function(shp,pop_field,choro_field,jenks=c(TRUE,FALSE), colval,lab
   }else{
     print("No field for choropleth values provided.")
   }
-  try(col_pos <- match(col_val, names(cents)))
+  try(col_pos <- match(colval, names(cents)))
   try(cents$color_field <- cents@data[,col_pos])
   
   if(missing(jenks)==TRUE | jenks==FALSE){
